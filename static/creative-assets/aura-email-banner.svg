@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">AURA LIVING — Email campaign banner</title><desc id="desc">Horizontal email creative using an Unsplash 3D interior render by Maverick Frame Studio with original campaign typography.</desc>
+  <defs><linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#181914" stop-opacity=".7"/><stop offset=".62" stop-color="#181914" stop-opacity=".13"/></linearGradient></defs>
+  <image href="https://images.unsplash.com/photo-1783581166963-62ab0930da61?auto=format&amp;fit=crop&amp;w=1500&amp;q=85" width="1200" height="400" preserveAspectRatio="xMidYMid slice"/><rect width="1200" height="400" fill="url(#shade)"/>
+  <text x="42" y="58" fill="#f5f0e4" font-family="Georgia,serif" font-size="28" letter-spacing="3">AURA</text><text x="137" y="56" fill="#e4dccb" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">LIVING</text>
+  <text x="45" y="221" fill="#e5d8bc" font-family="Arial,sans-serif" font-size="11" letter-spacing="4">A NOTE ON COMING HOME</text><text x="42" y="279" fill="#fffaf1" font-family="Georgia,serif" font-size="49" font-style="italic">The Quiet Edit</text><text x="46" y="321" fill="#f0ebdf" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">A considered collection for the season ahead.  ↗</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">AURA LIVING — Instagram story placement</title><desc id="desc">Portrait social campaign adaptation with typographic hierarchy and an Unsplash 3D interior render by Maverick Frame Studio.</desc>
+  <defs><linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#181914" stop-opacity=".24"/><stop offset=".48" stop-color="#181914" stop-opacity="0"/><stop offset="1" stop-color="#181914" stop-opacity=".74"/></linearGradient></defs>
+  <image href="https://images.unsplash.com/photo-1783581166963-62ab0930da61?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" width="1080" height="1920" preserveAspectRatio="xMidYMid slice"/><rect width="1080" height="1920" fill="url(#shade)"/>
+  <text x="72" y="156" fill="#fffaf1" font-family="Georgia,serif" font-size="41" letter-spacing="4">AURA</text><text x="203" y="154" fill="#f0e9db" font-family="Arial,sans-serif" font-size="10" letter-spacing="5">LIVING</text>
+  <text x="76" y="1430" fill="#e5d8bc" font-family="Arial,sans-serif" font-size="15" letter-spacing="5">OBJECTS FOR A CONSIDERED HOME</text>
+  <text x="68" y="1540" fill="#fffaf1" font-family="Georgia,serif" font-size="84">A softer way</text><text x="68" y="1635" fill="#fffaf1" font-family="Georgia,serif" font-size="84" font-style="italic">to come home.</text>
+  <text x="75" y="1722" fill="#f1ecdf" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">Thoughtful forms. Tactile materials.</text>
+  <rect x="74" y="1790" width="390" height="58" rx="2" fill="#f5f1e7"/><text x="100" y="1827" fill="#33352d" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">EXPLORE THE AUTUMN EDIT  ↗</text>
+</svg>

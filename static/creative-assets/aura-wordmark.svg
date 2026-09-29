@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">AURA LIVING wordmark</title><desc id="desc">Original typographic wordmark created for a fictional home decor brand.</desc>
+  <rect width="640" height="180" fill="#f5f3ee"/>
+  <text x="28" y="111" fill="#282a24" font-family="Georgia,serif" font-size="96" letter-spacing="5">AURA</text>
+  <text x="385" y="107" fill="#77786e" font-family="Arial,sans-serif" font-size="20" letter-spacing="9">LIVING</text>
+  <path d="M386 123h206" stroke="#b6a078" stroke-width="1"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">AURA LIVING — Designed for Living campaign poster</title><desc id="desc">Independent campaign layout over an Unsplash 3D interior render by Maverick Frame Studio. Edit the SVG text and image crop for practice use.</desc>
+  <defs><linearGradient id="shade" x1="0" y1="0" x2="0.12" y2="1"><stop offset="0" stop-color="#181914" stop-opacity=".04"/><stop offset=".48" stop-color="#181914" stop-opacity=".05"/><stop offset="1" stop-color="#181914" stop-opacity=".69"/></linearGradient></defs>
+  <image href="https://images.unsplash.com/photo-1783581166963-62ab0930da61?auto=format&amp;fit=crop&amp;w=1600&amp;q=88" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1080" height="1350" fill="url(#shade)"/>
+  <text x="74" y="93" fill="#faf8f1" font-family="Georgia,serif" font-size="39" letter-spacing="3">AURA</text><text x="201" y="91" fill="#e7e1d4" font-family="Arial,sans-serif" font-size="10" letter-spacing="5">LIVING</text>
+  <text x="76" y="935" fill="#e5d8bc" font-family="Arial,sans-serif" font-size="15" letter-spacing="5">THE AUTUMN EDIT</text>
+  <text x="70" y="1045" fill="#fbf8ef" font-family="Georgia,serif" font-size="83">Designed for</text><text x="70" y="1136" fill="#fbf8ef" font-family="Georgia,serif" font-size="83" font-style="italic">living.</text>
+  <path d="M78 1182h100" stroke="#d9c9a6"/>
+  <text x="78" y="1225" fill="#f4efe3" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">A softer point of view on home.</text>
+  <text x="78" y="1282" fill="#f4efe3" font-family="Arial,sans-serif" font-size="13" letter-spacing="3">DISCOVER THE COLLECTION  ↗</text>
+</svg>

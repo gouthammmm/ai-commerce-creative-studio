@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">AURA LIVING — Serein sofa product campaign</title><desc id="desc">Fictional product advertisement composed over the Unsplash living-room render credited to Maverick Frame Studio.</desc>
+  <defs><linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#161711" stop-opacity=".12"/><stop offset=".55" stop-color="#161711" stop-opacity=".04"/><stop offset="1" stop-color="#161711" stop-opacity=".82"/></linearGradient></defs>
+  <image href="https://images.unsplash.com/photo-1783581166963-62ab0930da61?auto=format&amp;fit=crop&amp;w=1600&amp;q=88" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/><rect width="1080" height="1350" fill="url(#shade)"/>
+  <text x="73" y="94" fill="#faf8f1" font-family="Georgia,serif" font-size="37" letter-spacing="3">AURA</text><text x="194" y="92" fill="#e7e1d4" font-family="Arial,sans-serif" font-size="9" letter-spacing="5">LIVING</text>
+  <text x="77" y="1016" fill="#dfd0b0" font-family="Arial,sans-serif" font-size="12" letter-spacing="4">NEW / THE SEREIN COLLECTION</text>
+  <text x="71" y="1094" fill="#fffaf1" font-family="Georgia,serif" font-size="58">Room to settle in.</text>
+  <text x="78" y="1146" fill="#f2eee5" font-family="Arial,sans-serif" font-size="12" letter-spacing="1">Serein Modular Sofa · imagined for slower evenings</text>
+  <text x="78" y="1244" fill="#f4efe3" font-family="Arial,sans-serif" font-size="12" letter-spacing="3">MEET YOUR NEW FAVORITE PLACE  ↗</text>
+</svg>

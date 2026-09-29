@@ -1,0 +1,13 @@
+<section class="page-width collection-page">
+  <header><p class="eyebrow">AURA LIVING / COLLECTION</p><h1>{{ collection.title | escape }}</h1>{% if collection.description != blank %}<div class="rte">{{ collection.description }}</div>{% endif %}</header>
+  <form class="collection-controls" method="get">
+    {% for filter in collection.filters %}<details class="collection-filter"><summary>{{ filter.label | escape }}{% if filter.active_values.size > 0 %} ({{ filter.active_values.size }}){% endif %}</summary>
+      {% if filter.type == 'price_range' %}<label>Min {{ cart.currency.symbol }}<input name="{{ filter.min_value.param_name }}" type="number" min="0" max="{{ filter.range_max | divided_by: 100.0 }}" value="{{ filter.min_value.value | divided_by: 100.0 }}"></label><label>Max {{ cart.currency.symbol }}<input name="{{ filter.max_value.param_name }}" type="number" min="0" max="{{ filter.range_max | divided_by: 100.0 }}" value="{{ filter.max_value.value | divided_by: 100.0 }}"></label>
+      {% else %}{% for filter_value in filter.values %}<label class="filter-value"><input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" {% if filter_value.active %}checked{% endif %} {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}><span>{{ filter_value.label | escape }} ({{ filter_value.count }})</span></label>{% endfor %}{% endif %}
+    </details>{% endfor %}
+    <label for="SortBy">Sort by</label><select id="SortBy" name="sort_by" onchange="this.form.submit()">{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}{% for option in collection.sort_options %}<option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name | escape }}</option>{% endfor %}</select>
+    <button type="submit">Apply filters</button><a href="{{ collection.url }}">Clear</a>
+  </form>
+  <div class="product-grid">{% paginate collection.products by 16 %}{% for product in collection.products %}{% render 'product-card', product: product %}{% endfor %}{% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}{% endpaginate %}</div>
+</section>
+{% schema %}{"name":"Main collection","settings":[],"presets":[{"name":"Main collection"}]}{% endschema %}

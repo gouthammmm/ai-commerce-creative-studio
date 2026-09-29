@@ -1,0 +1,2 @@
+<footer class="site-footer"><a class="wordmark" href="{{ routes.root_url }}">AURA <span>LIVING</span></a><p>{{ section.settings.note | escape }}</p><small>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</small></footer>
+{% schema %}{"name":"Footer","settings":[{"type":"text","id":"note","label":"Footer note","default":"Objects for considered living"}],"presets":[{"name":"Footer"}]}{% endschema %}
