@@ -1,6 +1,7 @@
 """AI Commerce & Creative Studio — independent portfolio prototype.
 
-Shopify endpoints are local mock endpoints. No live Shopify store is contacted.
+Commerce mutations run against the local SQLite demo; a separate read-only
+adapter can query products from an explicitly configured Shopify store.
 """
 from __future__ import annotations
 

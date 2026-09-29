@@ -27,7 +27,7 @@ Brief → research → concept → design → adapt → deliver. Each case study
 ## Shopify Architecture
 `shopify-theme/` contains Liquid layout, JSON templates, product/collection/cart sections and responsive theme assets. The product section uses Shopify’s native product form and updates variant price, availability and image. These are theme-conversion practice files, not a deployed theme. The local checkout is a simulation, not live Shopify checkout.
 
-`shopify_admin.py` provides an optional server-side Admin GraphQL adapter using Shopify’s client-credentials grant for a store in the owner’s Shopify organization. It reads products only; it does not access orders or customer data. A public multi-merchant app would need OAuth and a proper installation flow. No Shopify store is connected in the current deployment.
+`shopify_admin.py` provides a server-side Admin GraphQL adapter using Shopify’s client-credentials grant for a store in the owner’s Shopify organization. The Render deployment is connected to a development store and currently reads three fictional AURA LIVING draft products. The adapter reads product data only; it does not access orders or customer data. A public multi-merchant app would need OAuth and a proper installation flow. The draft samples have descriptions and Shopify categories, but no product media has been uploaded yet.
 
 ## AI Workflow
 The local Creative Studio creates draft product description, ad headline, social caption, CTA, SEO description, image prompt and creative variations. Deterministic output is labeled demo mode; server-side provider calls require valid credentials. VELORA includes an original Adobe Firefly-generated product still and a composed campaign launch layout; other legacy VELORA channel layouts retain a licensed Unsplash placeholder.
@@ -87,7 +87,7 @@ Open <http://127.0.0.1:5000>. Python 3.10 or later is recommended.
 The project includes a Render Blueprint at `render.yaml` for a free Flask web service. Follow [DEPLOYMENT.md](DEPLOYMENT.md) to publish it from GitHub. The free service can sleep while idle and has temporary filesystem storage, so local SQLite demo data may reset after a restart or redeploy. This is a portfolio demo, not a production store. Persistent SQLite storage requires paid hosting; check current pricing before enabling it.
 
 ## Environment Variables
-See `.env.example`. Provider and Shopify credentials are optional and must remain server-side. Without Shopify credentials, the live adapter remains disconnected and reports that status.
+See `.env.example`. Provider and Shopify credentials are optional and must remain server-side. Without Shopify credentials, the live adapter reports demo-only mode. The deployed demo has server-side credentials configured; these values are never placed in the repository or browser bundle.
 
 ## Demo Mode
 No payment is processed, no live Shopify order is created, campaign automations remain local, and analytics are simulated. Checkout confirmation explicitly says no payment was taken.
@@ -101,7 +101,7 @@ There is no checked-in automated test suite. The revision smoke check covers ser
 - Poster editor: `static/screenshots/poster-editor.jpg`
 
 ## Limitations
-No live Shopify deployment, payment processing, publishing integration, connected Figma workflow, or verified business metrics. Brand art is independent practice. The VELORA campaign still was generated with Adobe Firefly and is integrated into the portfolio; the remaining legacy VELORA placements use a licensed Unsplash placeholder. Optional in-app AI image routes require a provider key; demo mode returns a prompt and does not fabricate images.
+No live Shopify theme deployment, Shopify checkout/payment processing, publishing integration, connected Figma workflow, or verified business metrics. Brand art is independent practice. The VELORA campaign still was generated with Adobe Firefly and is integrated into the portfolio; the remaining legacy VELORA placements use a licensed Unsplash placeholder. The connected Shopify records are text-only draft samples. Optional in-app AI image routes require a provider key; demo mode returns a prompt and does not fabricate images.
 
 ## Future Improvements
-Connect an authenticated development-store adapter, add automated integration coverage and accessibility/performance review, and use owned/cleared campaign photography.
+Add automated integration coverage and accessibility/performance review, and add cleared product photography to the draft Shopify samples before any storefront publishing.
