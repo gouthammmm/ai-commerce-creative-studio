@@ -73,7 +73,7 @@ def _access_token() -> str:
 
 def products(first: int = 12) -> list[dict]:
     domain = _store_domain()
-    query = """query PortfolioProducts($first: Int!) { products(first: $first) { nodes { id title handle status productType featuredImage { url altText } variants(first: 20) { nodes { id title price compareAtPrice availableForSale } } } } }"""
+    query = """query PortfolioProducts($first: Int!) { products(first: $first) { nodes { id title handle status productType variants(first: 10) { nodes { id title price compareAtPrice availableForSale } } } } }"""
     result = _request(f"https://{domain}/admin/api/{API_VERSION}/graphql.json", {"query": query, "variables": {"first": max(1, min(first, 50))}}, {"X-Shopify-Access-Token": _access_token()})
     if result.get("errors"):
         # Do not send query details or returned data through the UI.

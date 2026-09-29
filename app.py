@@ -89,7 +89,7 @@ def live_shopify_product_list():
     # Return only storefront-safe product fields; never expose Admin credentials or customer/order data.
     safe=[]
     for item in items:
-        safe.append({"id":item.get("id"),"title":item.get("title"),"handle":item.get("handle"),"status":item.get("status"),"product_type":item.get("productType"),"image":item.get("featuredImage"),"variants":item.get("variants",{}).get("nodes",[])})
+        safe.append({"id":item.get("id"),"title":item.get("title"),"handle":item.get("handle"),"status":item.get("status"),"product_type":item.get("productType"),"variants":item.get("variants",{}).get("nodes",[])})
     return jsonify({"products":safe,"count":len(safe),"source":"Shopify Admin GraphQL API"})
 
 @app.get("/api/shopify/products")
