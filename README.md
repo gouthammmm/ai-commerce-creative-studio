@@ -30,7 +30,7 @@ Brief → research → concept → design → adapt → deliver. Each case study
 `shopify_admin.py` provides an optional server-side Admin GraphQL adapter using Shopify’s client-credentials grant for a store in the owner’s Shopify organization. It reads products only; it does not access orders or customer data. A public multi-merchant app would need OAuth and a proper installation flow. No Shopify store is connected in the current deployment.
 
 ## AI Workflow
-The local Creative Studio creates draft product description, ad headline, social caption, CTA, SEO description, image prompt and creative variations. Deterministic output is labeled demo mode; server-side provider calls require valid credentials. Placeholder photography in portfolio SVGs is Unsplash imagery and is not described as generated.
+The local Creative Studio creates draft product description, ad headline, social caption, CTA, SEO description, image prompt and creative variations. Deterministic output is labeled demo mode; server-side provider calls require valid credentials. VELORA includes an original Adobe Firefly-generated product still and a composed campaign launch layout; other legacy VELORA channel layouts retain a licensed Unsplash placeholder.
 
 ## API Architecture
 Flask serves the single-page storefront and JSON routes. The existing `/api/shopify/*` routes remain SQLite simulations. `/api/shopify/live/*` uses a real Admin GraphQL adapter only when server-side Shopify credentials are configured.
@@ -101,7 +101,7 @@ There is no checked-in automated test suite. The revision smoke check covers ser
 - Poster editor: `static/screenshots/poster-editor.jpg`
 
 ## Limitations
-No live Shopify deployment, payment processing, publishing integration, connected Figma/Adobe workflow, or verified business metrics. Brand art is independent practice. Current campaign photography is licensed Unsplash imagery, not generated AI imagery. Optional AI image routes require a provider key; demo mode returns a prompt and does not fabricate images.
+No live Shopify deployment, payment processing, publishing integration, connected Figma workflow, or verified business metrics. Brand art is independent practice. The VELORA campaign still was generated with Adobe Firefly and is integrated into the portfolio; the remaining legacy VELORA placements use a licensed Unsplash placeholder. Optional in-app AI image routes require a provider key; demo mode returns a prompt and does not fabricate images.
 
 ## Future Improvements
 Connect an authenticated development-store adapter, add automated integration coverage and accessibility/performance review, and use owned/cleared campaign photography.
