@@ -15,6 +15,7 @@ from contextlib import contextmanager
 
 from flask import Flask, jsonify, request, send_from_directory
 from dotenv import load_dotenv
+from shopify_admin import configured as shopify_live_configured, products as live_shopify_products, ShopifyError
 
 BASE = Path(__file__).resolve().parent
 load_dotenv(BASE / ".env")
@@ -72,7 +73,24 @@ def err(message, code=400): return jsonify({"error":message}), code
 def index(): return send_from_directory(BASE / "static", "index.html")
 
 @app.get("/api/health")
-def health(): return jsonify({"ok":True,"project":"AI Commerce & Creative Studio","mode":"independent prototype","shopify":"mock adapter","ai":"live" if os.getenv("OPENAI_API_KEY") else "demo copy mode"})
+def health(): return jsonify({"ok":True,"project":"AI Commerce & Creative Studio","mode":"independent prototype","shopify":"connected" if shopify_live_configured() else "demo only","ai":"live" if os.getenv("OPENAI_API_KEY") else "demo copy mode"})
+
+@app.get("/api/shopify/live/status")
+def live_shopify_status():
+    return jsonify({"configured":shopify_live_configured(),"mode":"live Admin API available" if shopify_live_configured() else "SQLite demo mode","api_version":"2026-07","message":"Read-only product query; credentials are server-side." if shopify_live_configured() else "Add the Shopify client ID, client secret, and store domain in the server environment to connect."})
+
+@app.get("/api/shopify/live/products")
+def live_shopify_product_list():
+    if not shopify_live_configured(): return err("Live Shopify is not configured. Demo catalogue remains available at /api/shopify/products.",503)
+    try:
+        items=live_shopify_products(request.args.get("first",12,type=int))
+    except ShopifyError as exc:
+        return err(str(exc),502)
+    # Return only storefront-safe product fields; never expose Admin credentials or customer/order data.
+    safe=[]
+    for item in items:
+        safe.append({"id":item.get("id"),"title":item.get("title"),"handle":item.get("handle"),"status":item.get("status"),"product_type":item.get("productType"),"image":item.get("featuredImage"),"variants":item.get("variants",{}).get("nodes",[])})
+    return jsonify({"products":safe,"count":len(safe),"source":"Shopify Admin GraphQL API"})
 
 @app.get("/api/shopify/products")
 def get_products():
@@ -277,7 +295,7 @@ def automation_history():
 
 @app.get("/api/docs/shopify")
 def shopify_docs():
-    return jsonify({"mode":"mock","base_url":"/api/shopify","endpoints":["GET /products","POST /products","GET /collections","GET /inventory","PATCH /inventory/<product_id>","GET /orders","POST /orders","GET /customers","POST /sync","POST /webhook"],"live_setup":{"SHOPIFY_STORE_DOMAIN":"your-store.myshopify.com","SHOPIFY_ADMIN_ACCESS_TOKEN":"shpat_… (server only)"},"note":"The included adapter uses local SQLite. Implement Shopify Admin GraphQL/REST calls, API-version pinning, scopes, rate limiting, retries, pagination, HMAC webhook verification, and token rotation before production."})
+    return jsonify({"mode":"local demo plus optional live product reader","base_url":"/api/shopify","endpoints":["GET /products","POST /products","GET /collections","GET /inventory","PATCH /inventory/<product_id>","GET /orders","POST /orders","GET /customers","POST /sync","POST /webhook"],"live_endpoints":["GET /api/shopify/live/status","GET /api/shopify/live/products"],"live_setup":{"SHOPIFY_STORE_DOMAIN":"your-store.myshopify.com","SHOPIFY_CLIENT_ID":"server only","SHOPIFY_CLIENT_SECRET":"server only"},"note":"Local commerce endpoints use SQLite simulation. The optional Shopify Admin GraphQL adapter reads products only and requires a store-owner client-credentials grant. Live orders, customers, checkout and webhooks are not connected."})
 
 init_db()
 if __name__ == "__main__": app.run(host=os.getenv("HOST","127.0.0.1"),port=int(os.getenv("PORT","5000")),debug=os.getenv("FLASK_DEBUG")=="1")

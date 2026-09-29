@@ -1,3 +1,5 @@
-# Portfolio description
+# AI Commerce & Creative Studio
 
-**AI Commerce & Creative Studio** — an independent portfolio prototype demonstrating a fictional storefront, Shopify Liquid/API practice layer, AI-assisted copy/prompt workflow, editable campaign canvas and professional fictional-brand studies. The project clearly distinguishes local mocks, optional live provider calls and simulated analytics; it claims no client work or real business results.
+An independent learning project exploring a premium fictional storefront, responsive conversion-minded product pages, a SQLite checkout simulation, custom Shopify Liquid theme sections, and an optional server-side Shopify Admin GraphQL product reader. The local commerce API and checkout are simulated; live Shopify access is inactive unless the owner configures app credentials for their own store.
+
+The creative portfolio contains fictional brand studies. Existing campaign imagery uses credited/licensed Unsplash photos and designed SVG layouts; it is not presented as AI-generated. No client, Shopify professional, sales, or conversion-results claims are made.

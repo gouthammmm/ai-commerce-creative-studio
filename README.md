@@ -7,7 +7,7 @@ An independent portfolio prototype combining a fictional AURA LIVING storefront,
 - Responsive storefront, product pages, collections, search, filtering, sorting, variants, wishlist and cart.
 - Cart → demo checkout → order confirmation → SQLite order record. No payment is taken.
 - Campaign manager, local design library, editable poster canvas, export and campaign attachment.
-- Mock Shopify-style APIs, Liquid theme examples, optional server-side AI connections, demo-mode fallback, simulated insights and local automation history.
+- SQLite demo commerce APIs, Shopify Liquid theme practice, optional server-side Shopify Admin GraphQL product read, optional AI connections, demo-mode fallback, simulated insights and local automation history.
 - Professional creative portfolio with category filters, case studies and reusable process/expertise sections.
 
 ## Professional Portfolio
@@ -25,16 +25,20 @@ All concepts below are fictional independent practice: [AURA LIVING](static/case
 Brief → research → concept → design → adapt → deliver. Each case study describes audience, direction, process, campaign assets and limitations.
 
 ## Shopify Architecture
-`shopify-theme/` contains Liquid layout, JSON templates, product/collection/cart sections and responsive theme assets. This is theme-conversion practice and is not deployed to a Shopify store. The local checkout is a simulation, not live Shopify checkout.
+`shopify-theme/` contains Liquid layout, JSON templates, product/collection/cart sections and responsive theme assets. The product section uses Shopify’s native product form and updates variant price, availability and image. These are theme-conversion practice files, not a deployed theme. The local checkout is a simulation, not live Shopify checkout.
+
+`shopify_admin.py` provides an optional server-side Admin GraphQL adapter using Shopify’s client-credentials grant for a store in the owner’s Shopify organization. It reads products only; it does not access orders or customer data. A public multi-merchant app would need OAuth and a proper installation flow. No Shopify store is connected in the current deployment.
 
 ## AI Workflow
 The local Creative Studio creates draft product description, ad headline, social caption, CTA, SEO description, image prompt and creative variations. Deterministic output is labeled demo mode; server-side provider calls require valid credentials. Placeholder photography in portfolio SVGs is Unsplash imagery and is not described as generated.
 
 ## API Architecture
-Flask serves the single-page storefront and these local JSON routes. Shopify endpoints use SQLite mock data, not a live store.
+Flask serves the single-page storefront and JSON routes. The existing `/api/shopify/*` routes remain SQLite simulations. `/api/shopify/live/*` uses a real Admin GraphQL adapter only when server-side Shopify credentials are configured.
 
 | Method | Route | Purpose |
 |---|---|---|
+| GET | `/api/shopify/live/status` | Report whether the optional live adapter is configured |
+| GET | `/api/shopify/live/products` | Read storefront-safe product fields from Shopify Admin GraphQL |
 | GET | `/api/shopify/products` | Search/filter/sort demo products |
 | GET | `/api/shopify/collections` | List derived product categories |
 | POST | `/api/shopify/orders` | Validate stock and save a simulated order |
@@ -83,7 +87,7 @@ Open <http://127.0.0.1:5000>. Python 3.10 or later is recommended.
 The project includes a Render Blueprint at `render.yaml` for a free Flask web service. Follow [DEPLOYMENT.md](DEPLOYMENT.md) to publish it from GitHub. The free service can sleep while idle and has temporary filesystem storage, so local SQLite demo data may reset after a restart or redeploy. This is a portfolio demo, not a production store. Persistent SQLite storage requires paid hosting; check current pricing before enabling it.
 
 ## Environment Variables
-See `.env.example`. OpenAI credentials are optional and must remain server-side. Shopify settings are documentation-only in this version.
+See `.env.example`. Provider and Shopify credentials are optional and must remain server-side. Without Shopify credentials, the live adapter remains disconnected and reports that status.
 
 ## Demo Mode
 No payment is processed, no live Shopify order is created, campaign automations remain local, and analytics are simulated. Checkout confirmation explicitly says no payment was taken.
@@ -97,7 +101,7 @@ There is no checked-in automated test suite. The revision smoke check covers ser
 - Poster editor: `static/screenshots/poster-editor.jpg`
 
 ## Limitations
-No live Shopify deployment, payment processing, publishing integration or verified business metrics. Brand art is independent practice. Unsplash photos are placeholders and may need replacement/review before external commercial use. Optional AI routes depend on provider setup; demo mode does not fabricate images.
+No live Shopify deployment, payment processing, publishing integration, connected Figma/Adobe workflow, or verified business metrics. Brand art is independent practice. Current campaign photography is licensed Unsplash imagery, not generated AI imagery. Optional AI image routes require a provider key; demo mode returns a prompt and does not fabricate images.
 
 ## Future Improvements
 Connect an authenticated development-store adapter, add automated integration coverage and accessibility/performance review, and use owned/cleared campaign photography.
